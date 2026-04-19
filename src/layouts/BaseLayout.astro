@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Research portfolio of Wang Ziyuan - Depth 3D Sensing & Agentic AI Research" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Wang Ziyuan" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Top gradient glow decoration -->
+    <div class="glow-decoration"></div>
+    
+    <main class="main-container">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+  
+  body {
+    min-height: 100vh;
+  }
+  
+  .glow-decoration {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(ellipse at center top, rgba(147, 197, 253, 0.15) 0%, rgba(147, 197, 253, 0.05) 40%, transparent 70%);
+  }
+  
+  .main-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 64px 24px;
+  }
+  
+  @media (min-width: 768px) {
+    .main-container {
+      padding: 0 32px 64px 32px;
+    }
+  }
+</style>

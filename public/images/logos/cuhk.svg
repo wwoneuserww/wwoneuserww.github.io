@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+  <!-- CUHK Shield-inspired logo -->
+  <rect x="2" y="4" width="32" height="32" rx="3" fill="#4B2E83"/>
+  <path d="M18 10 L28 20 L18 30 L8 20 Z" fill="#FFD700"/>
+  <circle cx="18" cy="20" r="5" fill="#4B2E83"/>
+  
+  <!-- Text -->
+  <text x="42" y="18" font-family="Georgia, serif" font-size="11" font-weight="600" fill="#4B2E83">CUHK</text>
+  <text x="42" y="30" font-family="Georgia, serif" font-size="8" fill="#666">The Chinese University</text>
+  <text x="42" y="38" font-family="Georgia, serif" font-size="8" fill="#666">of Hong Kong</text>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "name": "wang-ziyuan-cv",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
+    "preview": "bunx --bun astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.7.10",
+    "@astrojs/react": "^4.2.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.4",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3"
+  }
+}

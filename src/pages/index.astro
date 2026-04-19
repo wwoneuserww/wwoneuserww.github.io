@@ -1,0 +1,37 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/Hero.astro";
+import Section from "@/components/Section.astro";
+import Education from "@/components/Education.astro";
+import Projects from "@/components/Projects.astro";
+import Experience from "@/components/Experience.astro";
+import TechStack from "@/components/TechStack.tsx";
+import Awards from "@/components/Awards.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<BaseLayout title="Wang Ziyuan — Research Portfolio">
+  <Hero />
+  
+  <Section id="education" title="Education">
+    <Education />
+  </Section>
+  
+  <Section id="projects" title="Research Projects">
+    <Projects />
+  </Section>
+  
+  <Section id="experience" title="Research Experience">
+    <Experience />
+  </Section>
+  
+  <Section id="skills" title="Technical Skills">
+    <TechStack client:visible />
+  </Section>
+  
+  <Section id="awards" title="Awards & Honors">
+    <Awards />
+  </Section>
+  
+  <Footer />
+</BaseLayout>

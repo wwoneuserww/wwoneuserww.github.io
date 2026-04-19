@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  /* Academic warm white palette */
+  --color-bg: #FAF9F7;
+  --color-bg-muted: #F5F4F2;
+  --color-card: #FFFFFF;
+  --color-card-hover: #FEFEFE;
+  
+  /* Typography colors */
+  --color-foreground: #1A1A2E;
+  --color-muted: #4A4A5A;
+  --color-muted-light: #6B6B7B;
+  
+  /* Accent */
+  --color-accent: #2563EB;
+  --color-accent-light: #3B82F6;
+  --color-accent-muted: #93C5FD;
+  
+  /* Borders & shadows */
+  --color-border: #E5E4E2;
+  --color-border-light: #EFEEED;
+  
+  /* Fonts */
+  --font-heading: "Source Serif 4", "Georgia", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Consolas", monospace;
+  
+  /* Spacing & sizing */
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-foreground);
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent-muted);
+  color: var(--color-foreground);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-light);
+}
+
+/* Typography utilities */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Card base */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+  border-color: var(--color-border-light);
+}
+
+.card-featured {
+  border-left: 4px solid var(--color-accent);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 9999px;
+  background: var(--color-bg-muted);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border-light);
+}
+
+.badge-accent {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.badge-outline {
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-accent-light);
+}
+
+/* Section title with left accent bar */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.section-title::before {
+  content: "";
+  width: 4px;
+  height: 1.25em;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* Prose */
+.prose {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.prose strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}

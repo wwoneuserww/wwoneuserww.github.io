@@ -1,0 +1,27 @@
+---
+interface Props {
+  id?: string;
+  title?: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<section id={id} class="section">
+  {title && (
+    <h2 class="section-title">{title}</h2>
+  )}
+  <slot />
+</section>
+
+<style>
+  .section {
+    padding: 48px 0 56px 0;
+  }
+  
+  @media (min-width: 768px) {
+    .section {
+      padding: 56px 0 64px 0;
+    }
+  }
+</style>

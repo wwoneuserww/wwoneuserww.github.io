@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="240" fill="url(#bg1)" rx="8"/>
+  
+  <!-- Video timeline -->
+  <rect x="20" y="20" width="240" height="120" fill="#1e293b" rx="6"/>
+  <rect x="30" y="30" width="220" height="80" fill="#334155" rx="4"/>
+  
+  <!-- Activity segments on timeline -->
+  <rect x="30" y="120" width="220" height="12" fill="#475569" rx="2"/>
+  <rect x="45" y="122" width="30" height="8" fill="#3b82f6" rx="1"/>
+  <rect x="90" y="122" width="15" height="8" fill="#22c55e" rx="1"/>
+  <rect x="130" y="122" width="40" height="8" fill="#3b82f6" rx="1"/>
+  <rect x="190" y="122" width="20" height="8" fill="#f59e0b" rx="1"/>
+  
+  <!-- LLM Agent panel -->
+  <rect x="270" y="20" width="110" height="120" fill="#fff" rx="6" stroke="#e2e8f0"/>
+  <rect x="280" y="30" width="90" height="10" fill="#3b82f6" rx="2"/>
+  <text x="285" y="38" font-size="6" fill="#fff" font-family="system-ui">LLM Agent</text>
+  
+  <rect x="280" y="50" width="60" height="6" fill="#e2e8f0" rx="1"/>
+  <rect x="280" y="62" width="80" height="6" fill="#e2e8f0" rx="1"/>
+  <rect x="280" y="74" width="50" height="6" fill="#e2e8f0" rx="1"/>
+  
+  <!-- Decision icons -->
+  <circle cx="290" cy="100" r="8" fill="#22c55e" opacity="0.2"/>
+  <circle cx="310" cy="100" r="8" fill="#3b82f6" opacity="0.2"/>
+  <circle cx="330" cy="100" r="8" fill="#f59e0b" opacity="0.2"/>
+  
+  <!-- Report panel -->
+  <rect x="20" y="155" width="170" height="70" fill="#fff" rx="6" stroke="#e2e8f0"/>
+  <text x="30" y="175" font-size="8" fill="#1e293b" font-family="system-ui" font-weight="600">Activity Report</text>
+  <rect x="30" y="185" width="100" height="4" fill="#e2e8f0" rx="1"/>
+  <rect x="30" y="195" width="130" height="4" fill="#e2e8f0" rx="1"/>
+  <rect x="30" y="205" width="80" height="4" fill="#e2e8f0" rx="1"/>
+  
+  <!-- Behavioural memory -->
+  <rect x="200" y="155" width="180" height="70" fill="#fff" rx="6" stroke="#e2e8f0"/>
+  <text x="210" y="175" font-size="8" fill="#1e293b" font-family="system-ui" font-weight="600">Resident Memory</text>
+  
+  <!-- Memory graph -->
+  <polyline points="210,210 230,200 250,205 270,190 290,195 310,185 330,190 350,180" 
+            fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="350" cy="180" r="3" fill="#3b82f6"/>
+</svg>

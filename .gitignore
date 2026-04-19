@@ -1,0 +1,26 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+
+# local env
+.env
+.env.*
+
+# local backups
+.backup-*/
+
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+
+# local env
+.env
+.env.*
+
+# local backups
+.backup-*/
+

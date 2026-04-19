@@ -1,0 +1,18 @@
+---
+import ProjectCard from "./ProjectCard.tsx";
+import { researchProjects } from "@/data/resume";
+---
+
+<div class="projects-list">
+  {researchProjects.map((project) => (
+    <ProjectCard project={project} client:visible />
+  ))}
+</div>
+
+<style>
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+</style>

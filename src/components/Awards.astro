@@ -1,0 +1,212 @@
+---
+import { awards } from "@/data/resume";
+import CertificateLightbox from "./CertificateLightbox";
+
+const awardsByYear = awards.reduce((acc, award) => {
+  if (!acc[award.year]) acc[award.year] = [];
+  acc[award.year].push(award);
+  return acc;
+}, {} as Record<string, typeof awards>);
+
+const sortedYears = Object.keys(awardsByYear).sort((a, b) => {
+  const yearA = parseInt(a.split('-')[0].split('–')[0]);
+  const yearB = parseInt(b.split('-')[0].split('–')[0]);
+  return yearB - yearA;
+});
+
+const highlightTitles = ["Dean's List", "First-Class Prize"];
+
+// Collect all certificates for lightbox
+const allCertificates = awards
+  .filter(a => a.certificate)
+  .map(a => ({ src: a.certificate!, title: `${a.title} (${a.year})` }));
+---
+
+<div class="card awards-card">
+  <div class="awards-list">
+    {sortedYears.map((year) => (
+      <div class="year-group">
+        <div class="year-header">
+          <span class="year-label">{year}</span>
+          <div class="year-line"></div>
+        </div>
+        <ul class="year-awards">
+          {awardsByYear[year].map((award) => {
+            const isHighlight = highlightTitles.some(t => award.title.includes(t));
+            return (
+              <li class:list={["award-item", { highlight: isHighlight, "has-cert": !!award.certificate }]}>
+                <div class="award-content">
+                  {isHighlight ? (
+                    <svg class="award-icon star" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ) : (
+                    <span class="award-icon dot"></span>
+                  )}
+                  <span class="award-text">
+                    {award.title}
+                    <span class="award-org"> — {award.org}</span>
+                  </span>
+                </div>
+                {award.certificate && (
+                  <div class="award-cert" data-cert={award.certificate} data-title={`${award.title} (${award.year})`}>
+                    <img src={award.certificate} alt={award.title} loading="lazy" />
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+  
+  <!-- Lightbox component -->
+  <CertificateLightbox certificates={allCertificates} client:visible />
+</div>
+
+<style>
+  .awards-card {
+    padding: 24px;
+  }
+  
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .year-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .year-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+  
+  .year-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-light);
+  }
+  
+  .year-awards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .award-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+  }
+  
+  @media (min-width: 640px) {
+    .award-item.has-cert {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+  
+  .award-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1;
+  }
+  
+  .award-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .award-icon.star {
+    color: var(--color-accent);
+  }
+  
+  .award-icon.dot {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .award-icon.dot::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+  
+  .award-text {
+    color: var(--color-muted);
+  }
+  
+  .award-item.highlight .award-text {
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+  
+  .award-org {
+    color: var(--color-muted-light);
+  }
+  
+  /* Certificate thumbnail */
+  .award-cert {
+    flex-shrink: 0;
+    width: 80px;
+    height: 56px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--color-bg-muted);
+  }
+  
+  .award-cert:hover {
+    border-color: var(--color-accent-muted);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .award-cert img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  @media (min-width: 640px) {
+    .award-cert {
+      width: 100px;
+      height: 70px;
+    }
+  }
+</style>
+
+<script>
+  // Handle certificate clicks - dispatch custom event for lightbox
+  document.querySelectorAll('.award-cert').forEach(cert => {
+    cert.addEventListener('click', () => {
+      const src = cert.getAttribute('data-cert');
+      const title = cert.getAttribute('data-title');
+      if (src) {
+        window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src, title } }));
+      }
+    });
+  });
+</script>
