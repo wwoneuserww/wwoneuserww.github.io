@@ -62,7 +62,7 @@ const allCertificates = awards
   </div>
   
   <!-- Lightbox component -->
-  <CertificateLightbox certificates={allCertificates} client:visible />
+  <CertificateLightbox certificates={allCertificates} client:load />
 </div>
 
 <style>
@@ -198,15 +198,18 @@ const allCertificates = awards
   }
 </style>
 
-<script>
-  // Handle certificate clicks - dispatch custom event for lightbox
-  document.querySelectorAll('.award-cert').forEach(cert => {
-    cert.addEventListener('click', () => {
-      const src = cert.getAttribute('data-cert');
-      const title = cert.getAttribute('data-title');
-      if (src) {
-        window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src, title } }));
-      }
-    });
+<script is:inline>
+  // Use delegation so click handling remains reliable.
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const cert = target.closest(".award-cert");
+    if (!(cert instanceof HTMLElement)) return;
+
+    const src = cert.getAttribute("data-cert");
+    const title = cert.getAttribute("data-title");
+    if (src) {
+      window.dispatchEvent(new CustomEvent("open-lightbox", { detail: { src, title } }));
+    }
   });
 </script>

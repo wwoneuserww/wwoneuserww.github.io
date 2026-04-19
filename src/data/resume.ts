@@ -265,9 +265,9 @@ export const openSource = {
 export const awards: Award[] = [
   { title: "Dean's List", org: "Faculty of Engineering, CUHK", year: "2024–2025", certificate: "/images/awards/deans-list-2024-25.jpg" },
   { title: "College Head's List", org: "Shaw College, CUHK", year: "2024–2025", certificate: "/images/awards/college-heads-list-2024-25.jpg" },
-  { title: "College Head's List", org: "Shaw College, CUHK", year: "2023–2024" },
+  { title: "College Head's List", org: "Shaw College, CUHK", year: "2023–2024", certificate: "/images/awards/college-heads-list-2023-24.jpg" },
   { title: "Department / Programme Scholarship", org: "Dept. of Information Engineering, CUHK", year: "2024–2025", certificate: "/images/awards/dept-scholarship-2024-25.jpg" },
-  { title: "Department / Programme Scholarship", org: "Dept. of Information Engineering, CUHK", year: "2023–2024" },
+  { title: "Department / Programme Scholarship", org: "Dept. of Information Engineering, CUHK", year: "2023–2024", certificate: "/images/awards/dept-scholarship-2023-24.jpg" },
   { title: "Summer Research Scholarship", org: "CUHK Faculty of Engineering", year: "Summer 2025" },
   { title: "First-Class Prize", org: "National High School Mathematics League, China", year: "2022", certificate: "/images/awards/math-league-2022.png" },
   { title: "First-Class Prize", org: "National High School Mathematics League, China", year: "2021", certificate: "/images/awards/math-league-2021.png" },
